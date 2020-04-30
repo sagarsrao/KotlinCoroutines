@@ -21,7 +21,7 @@ class TryCatchViewModel(
         viewModelScope.launch {
             users.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper.getUsers()
+                val usersFromApi = apiHelper.getUsers() //
                 users.postValue(Resource.success(usersFromApi))
             } catch (e: Exception) {
                 users.postValue(Resource.error("Something Went Wrong", null))

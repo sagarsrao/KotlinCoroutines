@@ -24,9 +24,12 @@ class ParallelNetworkCallsViewModel(
             users.postValue(Resource.loading(null))
             try {
                 // coroutineScope is needed, else in case of any network error, it will crash
+
                 coroutineScope {
-                    val usersFromApiDeferred = async { apiHelper.getUsers() }
-                    val moreUsersFromApiDeferred = async { apiHelper.getMoreUsers() }
+                    val usersFromApiDeferred =
+                        async { apiHelper.getUsers() } //1st api
+                    val moreUsersFromApiDeferred =
+                        async { apiHelper.getMoreUsers() } //2nd Api
 
                     val usersFromApi = usersFromApiDeferred.await()
                     val moreUsersFromApi = moreUsersFromApiDeferred.await()

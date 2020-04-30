@@ -21,9 +21,9 @@ class SeriesNetworkCallsViewModel(
         viewModelScope.launch {
             users.postValue(Resource.loading(null))
             try {
-                val usersFromApi = apiHelper.getUsers()
-                val moreUsersFromApi = apiHelper.getMoreUsers()
-                val allUsersFromApi = mutableListOf<ApiUser>()
+                val usersFromApi = apiHelper.getUsers() // 01 st network call
+                val moreUsersFromApi = apiHelper.getMoreUsers() // 02 nd network call
+                val allUsersFromApi = mutableListOf<ApiUser>()// 03 rd network call
                 allUsersFromApi.addAll(usersFromApi)
                 allUsersFromApi.addAll(moreUsersFromApi)
                 users.postValue(Resource.success(allUsersFromApi))

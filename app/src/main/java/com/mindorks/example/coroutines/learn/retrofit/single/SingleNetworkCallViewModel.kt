@@ -8,6 +8,7 @@ import com.mindorks.example.coroutines.data.api.ApiHelper
 import com.mindorks.example.coroutines.data.local.DatabaseHelper
 import com.mindorks.example.coroutines.data.model.ApiUser
 import com.mindorks.example.coroutines.utils.Resource
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class SingleNetworkCallViewModel(
@@ -18,8 +19,8 @@ class SingleNetworkCallViewModel(
     private val users = MutableLiveData<Resource<List<ApiUser>>>()
 
     fun fetchUsers() {
-        viewModelScope.launch {
-            users.postValue(Resource.loading(null))
+        GlobalScope.launch {
+            users.postValue(Resource.loading(null))//Progress bar
             try {
                 val usersFromApi = apiHelper.getUsers()
                 users.postValue(Resource.success(usersFromApi))

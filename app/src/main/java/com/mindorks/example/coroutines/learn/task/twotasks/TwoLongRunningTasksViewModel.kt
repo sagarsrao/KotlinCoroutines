@@ -21,7 +21,7 @@ class TwoLongRunningTasksViewModel(
             status.postValue(Resource.loading(null))
             try {
                 // do long running tasks
-                val resultOneDeferred = async { doLongRunningTaskOne() }
+                val resultOneDeferred = async { doLongRunningTaskOne() } //
                 val resultTwoDeferred = async { doLongRunningTaskTwo() }
                 val combinedResult = resultOneDeferred.await() + resultTwoDeferred.await()
 

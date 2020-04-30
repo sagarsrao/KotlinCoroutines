@@ -19,9 +19,9 @@ class RoomDBViewModel(private val apiHelper: ApiHelper, private val dbHelper: Da
         viewModelScope.launch {
             users.postValue(Resource.loading(null))
             try {
-                val usersFromDb = dbHelper.getUsers()
+                val usersFromDb = dbHelper.getUsers() //get the data from the db
                 if (usersFromDb.isEmpty()) {
-                    val usersFromApi = apiHelper.getUsers()
+                    val usersFromApi = apiHelper.getUsers() //hit he api
                     val usersToInsertInDB = mutableListOf<User>()
 
                     for (apiUser in usersFromApi) {

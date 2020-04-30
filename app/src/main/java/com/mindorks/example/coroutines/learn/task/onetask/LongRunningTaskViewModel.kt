@@ -40,6 +40,7 @@ class LongRunningTaskViewModel(
         withContext(Dispatchers.Default) {
             // your code for doing a long running task
             // Added delay to simulate
+            /*This kind of co routine can be used when splash screen can be launched*/
             delay(5000)
         }
     }
